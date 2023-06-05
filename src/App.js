@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Container from 'react-bootstrap/Container';
+import { ToastContainer } from 'react-toastify';
+import { UserContext } from './context/UseContext';
+import { useContext, useEffect } from 'react';
+import PublicRoutes from './routes/PublicRoutes';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { user, loginContext } = useContext(UserContext);
+
+    useEffect(() => {
+        if (localStorage.getItem('token') && localStorage.getItem('token')) {
+            loginContext(localStorage.getItem('email'), localStorage.getItem('token'));
+        }
+    }, []);
+
+    return (
+        <>
+            <div className="app-container">
+                <Container>
+                    <PublicRoutes />
+                </Container>
+            </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+        </>
+    );
 }
 
 export default App;

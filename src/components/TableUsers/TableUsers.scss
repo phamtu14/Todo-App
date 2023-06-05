@@ -1,0 +1,41 @@
+
+.plus {
+    margin-right: 6px;
+}
+
+.search input[type="text"]{
+    border: 0.5px solid lightblue;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+    outline: none;
+    color: red;
+}
+
+.search input[type="text"]:focus{
+    border: 0.5px solid red;    
+}
+
+.search input::placeholder{
+    color: red;
+}
+
+
+.sort {
+    display: flex;
+    justify-content: space-between;
+
+    .down {
+        margin-right: 5px;
+    }
+}
+.file {
+    margin-right: 6px;
+}
+
+.import {
+    margin-right: 15px;
+}
+
+
+
